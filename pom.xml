@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.tasks</groupId>
+    <version>0.8</version>
+    <artifactId>cloud-enabled-microservice</artifactId>
+    <packaging>pom</packaging>
+ 
+    <name>Cloud enabled tasks microservice </name>
+    <description>Cloud enabled Spring boot microservice with configuration, service discovery, resiliency, routing
+    </description>
+
+    <modules>
+        <module>tasks-service</module>
+        <module>config-service</module>
+        <module>discovery-service</module>
+        <module>routing-service</module>
+        <module>oauth-service</module>
+	    <module>tasks-client</module>
+    </modules>
+
+</project>

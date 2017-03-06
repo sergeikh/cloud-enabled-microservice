@@ -1,0 +1,98 @@
+version: '3'
+services:
+  db:
+    build:
+      context: ../mysql
+    image: taskservicedb
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: taskservice
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 123
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      - cloud
+
+  config-service:
+    image: config-service
+    networks:
+      - cloud
+    expose:
+      - "8888"
+    ports:
+      - "8888:8888"
+
+  discovery-service:
+    image: discovery-service
+    networks:
+      - cloud
+    expose:
+      - "8761"
+    ports:
+      - "8761:8761"
+
+  routing-service:
+    image: routing-service
+    networks:
+      - cloud
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: discovery-service
+    links:
+      - discovery-service
+    expose:
+      - "5555"
+    ports:
+      - "5555:5555"
+
+  oauth-service:
+    image: oauth-service
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: discovery-service
+    links:
+      - discovery-service
+    networks:
+      - cloud
+    expose:
+      - "9999"
+
+  tasks-service:
+    image: tasks-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CLOUD_CONFIG_URI: http://config-service:8888
+      EUREKA_INSTANCE_HOSTNAME: discovery-service
+    depends_on:
+      - db
+      - config-service
+    links:
+      - db
+      - config-service
+      - discovery-service
+      - routing-service
+    networks:
+      - cloud
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+
+  tasks-client:
+    image: tasks-client
+    depends_on:
+      - tasks-service
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: discovery-service
+    links:
+      - oauth-service
+      - routing-service
+      - discovery-service
+    networks:
+      - cloud
+    expose:
+      - "8082"
+
+networks:
+  cloud:

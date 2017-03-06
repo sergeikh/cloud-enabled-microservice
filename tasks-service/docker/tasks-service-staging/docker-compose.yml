@@ -1,0 +1,11 @@
+taskservice:
+    build: .
+    ports:
+        - "8080:8080"
+    environment:
+        SPRING_PROFILES_ACTIVE: staging
+    links:
+        - taskservicedb
+
+taskservicedb:
+    image: taskservicedb:lates

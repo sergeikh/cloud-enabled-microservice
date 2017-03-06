@@ -1,0 +1,8 @@
+*.md
+.dockerignore~
+README.md~
+Dockerfile~
+Dockerfile.save
+haproxy
+mysql
+tasks-service-staging

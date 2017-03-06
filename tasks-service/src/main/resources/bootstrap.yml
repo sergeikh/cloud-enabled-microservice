@@ -1,0 +1,12 @@
+# It's very unclear but this file is loaded before configuration in *.properties
+
+#config-service can be set through env variable
+#
+#for more information: http://cloud.spring.io/spring-cloud-static/Brixton.SR5/#_spring_cloud_config_client
+
+#spring:
+#  application:
+#    name: tasks
+#  cloud:
+#    config:
+#      uri: http://config-service:8888
