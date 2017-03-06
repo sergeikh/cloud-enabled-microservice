@@ -3,7 +3,7 @@ Tasks microservice (Spring Boot, MVC, Data, Lombok, Cloud, OAuth2, Config, Eurek
 
 *Resource is a Task*
 
-Some core use cases for a Task Service are:
+Some core use cases for a Task Service are
 
 Use cases
 =========
