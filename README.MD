@@ -1,4 +1,4 @@
-Tasks microservice (Spring Boot, MVC, Data, Lombok, Cloud, OAuth2, Config, Eureka, Zuul, Hystrix, Docker)
+Tasks microservice (Spring Boot, MVC, Data, Lombok, Cloud, OAuth2, Config, Eureka, Zuul, Hystrix, Docker) [![Build Status](https://travis-ci.org/sergeikh/wifispots.svg?branch=master)](https://travis-ci.org/sergeikh/cloud-enabled-microservice)
 =========================================================================================================
 
 *Resource is a Task*
