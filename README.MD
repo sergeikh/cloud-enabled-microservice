@@ -117,4 +117,4 @@ Run compose
 
 	`cd tasks-service/docker/cloud-enabled`
 
-`docker-compose up`
+    `docker-compose up`
